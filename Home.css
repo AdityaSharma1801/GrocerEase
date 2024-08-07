@@ -122,7 +122,7 @@ background-color:#40aa54;}
     max-width: 1250px;
     height: 500px;
     border-radius: 30px;
-    background-color: #f9fd06;
+    background-color: #FFD700;
     margin: 10px auto;
     position: relative;
     overflow: hidden;
@@ -179,13 +179,13 @@ background-color:#40aa54;}
     color: #202020;
 }
 .search-banner-text strong{
-    color: #4eb060;
+    color: #ffffff;
     font-size: 1.4rem;
     margin-top: 4px;
 }
 .search-box{
     background-color: #ffffff;
-    height: 50px;
+    height: 70px;
     display: flex;
     align-items: center;
     margin-top: 25px;
@@ -206,10 +206,11 @@ background-color:#40aa54;}
     width: 100%;
     padding: 0px 10px;
     outline: none;
+    font-size: 25px;
 }
 .search-box .search-btn{
     width:220px;
-    height: 40px;
+    height: 60px;
     border-radius: 30px;
     background-color: #040504;
     border: none;
