@@ -30,3 +30,68 @@ function formatTime(time) {
 countdown();
 
 setInterval(countdown, 1000);
+
+
+const placeholders = ["Search 'milk'", "Search 'curd'", "Search 'bread'","Search 'medicines'","Search 'sugar'","Search 'butter'","Search 'paneer'","Search 'chocolate'"];
+let placeholderIndex = 0;
+const placeholderText = document.querySelector('.placeholder-text');
+const searchBox = document.getElementById('searchBox');
+const suggestionsList = document.getElementById('suggestions');
+
+let placeholderInterval;
+
+// Placeholder animation
+function changePlaceholder() {
+    placeholderText.innerText = placeholders[placeholderIndex];
+    placeholderIndex = (placeholderIndex + 1) % placeholders.length;
+}
+
+// Start the placeholder animation
+function startPlaceholderAnimation() {
+    changePlaceholder();
+    placeholderText.style.animation = 'slideUp 3s infinite';
+    placeholderInterval = setInterval(changePlaceholder, 3000);
+}
+
+// Stop the placeholder animation
+function stopPlaceholderAnimation() {
+    clearInterval(placeholderInterval);
+    placeholderText.style.animation = 'none';
+    placeholderText.style.opacity = '0';
+}
+
+// Set the initial placeholder and start animation
+startPlaceholderAnimation();
+
+// Suggestions data
+const suggestions = ["milk", "curd", "bread", "butter", "cheese", "yogurt", "paneer", "cream"];
+
+// Show suggestions
+searchBox.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    suggestionsList.innerHTML = '';
+    if (query) {
+        const filteredSuggestions = suggestions.filter(item => item.toLowerCase().includes(query));
+        filteredSuggestions.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item;
+            listItem.addEventListener('click', function() {
+                searchBox.value = item;
+                suggestionsList.innerHTML = '';
+            });
+            suggestionsList.appendChild(listItem);
+        });
+    }
+});
+
+// Stop placeholder animation when user starts typing
+searchBox.addEventListener('focus', stopPlaceholderAnimation);
+searchBox.addEventListener('input', stopPlaceholderAnimation);
+
+// Resume placeholder animation if input is empty when it loses focus
+searchBox.addEventListener('blur', function() {
+    if (!this.value) {
+        placeholderText.style.opacity = '1';
+        startPlaceholderAnimation();
+    }
+});

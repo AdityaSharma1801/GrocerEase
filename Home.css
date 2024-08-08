@@ -185,7 +185,7 @@ background-color:#40aa54;}
     font-size: 1.4rem;
     margin-top: 4px;
 }
-.search-box{
+.search-box {
     background-color: #ffffff;
     height: 70px;
     display: flex;
@@ -193,23 +193,107 @@ background-color:#40aa54;}
     margin-top: 25px;
     padding: 0px 5px 0px 20px;
     border-radius: 30px;
-    border-color: #78d98f;
-    border-width: 1.5px;
-    border-style: solid;
+    border: 1.5px solid #78d98f;
 }
-.search-box i{
+
+.search-box i {
     font-size: 1.3rem;
     color: #3b3b3b;
     margin: 0px 10px;
 }
-.search-box .search-input{
+
+.search-box .search-input {
     height: 40px;
     border: none;
-    width: 100%;
+    width: 80%;
     padding: 0px 10px;
     outline: none;
     font-size: 25px;
+    transition: all 0.3s ease;
 }
+
+.search-box .search-input:focus {
+    border-color: #007bff;
+}
+
+.search-btn {
+    height: 40px;
+    padding: 0px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-left: 10px; /* Space between input and button */
+}
+
+.placeholder-container {
+    position: absolute;
+    top: 60%;
+    left: 50px;
+    font-size: 25px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 27px; /* Adjust based on your font-size */
+}
+
+.placeholder-text {
+    display: inline-block;
+    opacity: 0;
+    animation: slideUp 3s infinite;
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    80% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+.suggestions-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    width: calc(100% - 20px); /* Adjust based on input width */
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}
+
 .search-box .search-btn{
     width:220px;
     height: 60px;
